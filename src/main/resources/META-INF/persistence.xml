@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://java.sun.com/xml/ns/persistence
+        http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+
+	
+
+	<persistence-unit name="sciensacloud_DataSource">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<non-jta-data-source>java:jboss/datasources/sciensacloud_DataSource</non-jta-data-source>
+		<class>br.com.sciensa.sciensacloud.model.Client</class>
+		<class>br.com.sciensa.sciensacloud.model.Machine</class>
+		<class>br.com.sciensa.sciensacloud.model.Cartridge</class>
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			<property name="hibernate.hbm2ddl.auto" value="validate" />
+			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.format_sql" value="false" />
+			<property name="jboss.entity.manager.factory.jndi.name"
+				value="java:/sciensacloudPersistenceEntityManagerFactory" />
+			<property name="hibernate.cache.use_second_level_cache"
+				value="false" />
+		</properties>
+	</persistence-unit>
+</persistence>

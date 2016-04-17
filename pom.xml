@@ -30,14 +30,24 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-server</artifactId>
-			<version>1.9</version>
+			<groupId>org.glassfish.jersey.containers</groupId>
+			<artifactId>jersey-container-servlet</artifactId>
+			<version>2.22.2</version>
 		</dependency>
 		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-json</artifactId>
-			<version>1.9</version>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>2.22.2</version>
+		</dependency>
+	    <dependency>
+			<groupId>org.glassfish.jersey.containers.glassfish</groupId>
+			<artifactId>jersey-gf-cdi</artifactId>
+			<version>2.14</version>
+		</dependency> 
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-json-jackson</artifactId>
+			<version>2.22.2</version>
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
@@ -59,6 +69,12 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>5.1.0.Final</version>
 		</dependency>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>7.0</version>
+		</dependency>
+
 
 	</dependencies>
 
