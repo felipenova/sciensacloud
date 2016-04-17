@@ -13,7 +13,7 @@ import br.com.sciensa.sciensacloud.model.Machine;
  * @author Felipe Nova
  *
  */
-public class MachineJpaDAO implements MachineDAO {
+public class MachineJpaDAO extends JpaDAO<Machine,Long> implements MachineDAO  {
 	@PersistenceContext(unitName="sciensacloud_DataSource", name="sciensacloud_DataSource")
 	private EntityManager manager;
 
@@ -23,5 +23,20 @@ public class MachineJpaDAO implements MachineDAO {
 		q.setParameter("clientHash", clientHash.toUpperCase());
 		return q.getResultList();
 	}
+	
+	@Override
+	public Machine getMachineByClientHashAndMachineId(String clientHash, Long machineId) throws Exception {
+		TypedQuery<Machine> q = manager.createNamedQuery("search.by.client.hash.and.machine.id", Machine.class);
+		q.setParameter("clientHash", clientHash.toUpperCase());
+		q.setParameter("machineId", machineId);
+		List<Machine> machines = q.getResultList();
+		if(!machines.isEmpty()){
+			return machines.get(0);
+		}else{
+			return null;
+		}
+	}
+	
+	
 
 }

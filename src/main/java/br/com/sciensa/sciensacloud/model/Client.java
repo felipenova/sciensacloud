@@ -35,7 +35,9 @@ public class Client {
 
 	@Column(name="hash",nullable=false)
 	private String hash;
-
+	
+	@Column(name="email",nullable=false)
+	private String email;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="created",nullable=false)
@@ -85,6 +87,14 @@ public class Client {
 
 	public void setMachines(List<Machine> machines) {
 		this.machines = machines;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	@Override

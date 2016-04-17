@@ -30,7 +30,10 @@ import br.com.sciensa.sciensacloud.helper.JsonStdDateSerializer;
 @Table(name="Machine")
 @NamedQueries(value={
 		@NamedQuery(name="search.by.client.hash", 
-				query="select m from Machine m join m.client cli where upper(cli.hash) = :clientHash")
+				query="select m from Machine m join m.client cli where upper(cli.hash) = :clientHash"),
+		@NamedQuery(name="search.by.client.hash.and.machine.id", 
+		query="select m from Machine m join m.client cli where upper(cli.hash) = :clientHash and m.id = :machineId")
+		
 })
 public class Machine {
 	
