@@ -3,7 +3,7 @@ package br.com.sciensa.sciensacloud.dao;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-public abstract class JpaDAO<ENT,ID>  {
+public abstract class JpaDAO<ENT>  {
 	@PersistenceContext(unitName="sciensacloud_DataSource", name="sciensacloud_DataSource")
 	private EntityManager manager;
 
@@ -30,6 +30,10 @@ public abstract class JpaDAO<ENT,ID>  {
 		if(ent == null){
 			throw new NullPointerException("A entidade a ser persistida está nula.");
 		}
+	}
+	
+	public EntityManager getEntityManager(){
+		return manager;
 	}
 
 }

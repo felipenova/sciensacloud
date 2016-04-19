@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -24,8 +26,14 @@ import br.com.sciensa.sciensacloud.helper.JsonStdDateSerializer;
 
 @Entity
 @Table(name="Client")
+@NamedQueries(value={
+		@NamedQuery(name="search.by.hash", 
+				query="select c from Client c  where upper(c.hash) = :hash"),
+		@NamedQuery(name="verify.hash.exists", 
+		query="select c.hash from Client c  where upper(c.hash) = :hash")
+})
 public class Client {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -33,7 +41,7 @@ public class Client {
 	@Column(name="name",nullable=false)
 	private String name;
 
-	@Column(name="hash",nullable=false)
+	@Column(name="hash",nullable=false,unique=true)
 	private String hash;
 	
 	@Column(name="email",nullable=false)
