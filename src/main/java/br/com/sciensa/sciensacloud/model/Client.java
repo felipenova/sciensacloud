@@ -54,7 +54,7 @@ public class Client {
 	private Date created;
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "client", targetEntity = Machine.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "client", targetEntity = Machine.class, fetch = FetchType.EAGER)
 	private List<Machine> machines;
 
 	public Long getId() {

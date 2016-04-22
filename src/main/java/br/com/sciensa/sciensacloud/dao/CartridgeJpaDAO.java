@@ -15,7 +15,7 @@ import br.com.sciensa.sciensacloud.model.Client;
  * @author Felipe Nova
  *
  */
-public class CartridgeJpaDAO implements CartdrigeDAO  {
+public class CartridgeJpaDAO implements CartridgeDAO  {
 	@PersistenceContext(unitName="sciensacloud_DataSource", name="sciensacloud_DataSource")
 	private EntityManager manager;
 

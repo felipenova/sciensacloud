@@ -27,10 +27,14 @@ public class MachineServiceImpl implements MachineService{
 	}
 
 	@Override
-	public Machine update(Machine machine,String hash) throws Exception {
+	public Machine update(Machine machine,String hash, String id) throws Exception {
 		Boolean exists = ifExistsMachineByClientHash(hash, machine.getId());
 		if(!exists){
 			throw new ForbiddenException("Essa máquina não é desse usuário.");
+		}
+		
+		if(machine.getId() != Long.parseLong(id)){
+			throw new IllegalArgumentException("A máquina solicitada para atualização não é igual ao id da URL.");
 		}
 		return machineDAO.update(machine);
 	}

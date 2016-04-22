@@ -49,10 +49,10 @@ public class MachineRest {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/{id:[0-9][0-9]*}/{hash}")
-	public Response update(@PathParam("hash") String hash,Machine ent) {
+	public Response update(@PathParam("hash") String hash,@PathParam("id") String id,Machine ent) {
 		try {
 			Machine resp;
-			resp = machineService.update(ent,hash);
+			resp = machineService.update(ent,hash,id);
 			return Response.status(200).entity(resp).build();
 		} catch (Exception e) {
 			return Response.status(500).entity(e.getMessage()).build();
@@ -63,7 +63,7 @@ public class MachineRest {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/{hash}")
-	public Response insert(Machine machine, String hash){
+	public Response insert(Machine machine,@PathParam("hash") String hash){
 		Response response = null;
 		try {	
 			Machine m = machineService.insert(machine, hash);
